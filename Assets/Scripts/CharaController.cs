@@ -23,9 +23,16 @@ public class CharaController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        this.transform.Translate(speed * -50, 0, 0);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+
         //‰E‚É“®‚­
         this.transform.Translate(speed, 0, 0);
     }
