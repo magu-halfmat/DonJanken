@@ -5,42 +5,40 @@ using UnityEngine;
 public class CharaController : MonoBehaviour
 {
     string charaName;
-    float speed = 0;
+    public float speed;
+    bool isTouch = false;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        charaName = this.gameObject.name;
-
-        if (charaName == "Player")
-        {
-            speed = 0.03f;
-        }
-
-        else if (charaName == "Enemy")
-        {
-            speed = -0.03f;
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        this.transform.Translate(speed * -50, 0, 0);
-        Invoke(nameof(ShootJankenHand), 1.0f);
+        Transform charaPos = this.transform;
+        Vector3 pos = charaPos.position;
+        
+        for (int i = 0; i < 50; i++)
+        {
+            pos.x += speed * -1;
+            charaPos.position = pos;
+        }
+       
+        isTouch = true;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //‰E‚É“®‚­
-        this.transform.Translate(speed, 0, 0);
+        if (isTouch == false)
+        {
+            this.transform.Translate(speed, 0, 0);
+        }
+        
     }
 
 
-    void ShootJankenHand()
-    {
-        Debug.Log("‚±‚±‚ÅƒWƒƒƒ“ƒPƒ“‚ÌŽè‚ð‚¾‚·");
-    }
 }
