@@ -26,6 +26,7 @@ public class CharaController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         this.transform.Translate(speed * -50, 0, 0);
+        Invoke(nameof(ShootJankenHand), 1.0f);
 
     }
 
@@ -35,5 +36,11 @@ public class CharaController : MonoBehaviour
 
         //‰E‚É“®‚­
         this.transform.Translate(speed, 0, 0);
+    }
+
+
+    void ShootJankenHand()
+    {
+        Debug.Log("‚±‚±‚ÅƒWƒƒƒ“ƒPƒ“‚ÌŽè‚ð‚¾‚·");
     }
 }
